@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Cambié la posición del atributo lang al elemento <html> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../icons/favicon1.ico" type="image/x-icon">
+    <title>Contactanos</title>
+</head>
+
+<body id="body">
+    <!--HEADER / NAV-->
+    <header id="header">
+        <nav id="navBar">
+            <ul>
+                <li><a href="../index.html">JUAN JOSÉ PEÑAHERRERA R.</a></li>
+                <li><a href="../index.html">INICIO</a></li>
+                <li><a href="sobre_mi.html">SOBRE MI</a></li>
+                <li><a href="servicios.html">SERVICIOS</a></li>
+                <li><a href="noticias.html">NOTICIAS</a></li>   
+                <li><a href="#">CONTACTO</a></li>
+            </ul>    
+        </nav>
+    </header>
+
+    <!--CONTENIDO PRINCIPAL-->
+    <main class="contact-section">
+        <!-- Lado izquierdo con el texto lorem -->
+        <div class="text-section">
+            <h2>CONTACTO</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus placerat purus at odio feugiat
+                ultricies. Sed aliquam tellus vel ligula convallis fermentum. Mauris eget quam sit amet justo 
+                consectetur rutrum. Pellentesque vehicula dolor libero, a tincidunt mauris dapibus in. Cras quis 
+                vestibulum sapien. Donec blandit pretium dui a facilisis.
+            </p>
+        </div>
+    
+        <!-- Lado derecho con el formulario -->
+        <div class="form-section">
+            <form action="/submit_form" method="POST">
+                <!-- NOMBRE -->
+                <label for="nombre">NOMBRE</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Give me some text">
+    
+                <!-- APELLIDO -->
+                <label for="apellido">APELLIDO</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Give me some text">
+    
+                <!-- CORREO -->
+                <label for="correo">CORREO</label>
+                <input type="email" id="correo" name="correo" placeholder="Give me some text">
+    
+                <!-- ASUNTO -->
+                <label for="asunto">ASUNTO</label>
+                <input type="text" id="asunto" name="asunto" placeholder="Give me some text">
+    
+                <!-- DESCRIPCION -->
+                <label for="descripcion">DESCRIPCION</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Give me some text"></textarea>
+    
+                <!-- SUBMIT -->
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+    
+    
+
+    <!--FOOTER-->
+    <footer id="footer">
+        <section class="footer-links">
+            <ul>
+                <li>
+                    <a href="https://wa.me/593996176762" target="_blank">
+                        <img src="../icons/whatsapp.svg" alt="Whatsapp" width="50" height="50">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://discord.com/channels/" target="_blank">
+                        <img src="../icons/discord.svg" alt="Discord" width="50" height="50">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/jjpenaherrera/" target="_blank">
+                        <img src="../icons/linkedin.svg" alt="LinkedIn" width="50" height="50">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/jjpenaherrera/" target="_blank">
+                        <img src="../icons/instagram.svg" alt="Instagram" width="50" height="50">
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="footer-copyright">
+            <p>&copy; 2024 Juan José Peñaherrera - Todos los derechos reservados</p>
+        </section>
+    </footer>
+
+</body>
+</html>
