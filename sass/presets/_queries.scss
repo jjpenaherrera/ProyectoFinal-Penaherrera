@@ -1,0 +1,17 @@
+/* Media Query para servicios en columnas en pantallas pequeñas */
+
+@media (max-width: 992px) {
+    .services-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .image-container {
+        padding-bottom: 20px;
+    }
+}

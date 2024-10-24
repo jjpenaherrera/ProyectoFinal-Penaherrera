@@ -1,0 +1,17 @@
+/*
+    !important = Aplica a las propiedades y pisa todo orden jerárquico
+    ID = Único e irrepetible / DNI / IMEI / PATENTE DE UN AUTO
+    class = Se pueden repetir y utilizar más de una vez
+    Etiquetas/selectores = Etiquetas semánticas del HTML.
+*/
+
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: #E4E4F9;
+}
+
