@@ -1,0 +1,48 @@
+/* HEADER */
+#header {
+    width: 100%;
+    min-height: 80px; /* Altura del header */
+    background-color: #2D4B5A;
+    padding: 0px;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    align-content: center;
+}
+
+#navBar {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; /* Deja el primer elemento a la izquierda y el resto a la derecha */
+}
+
+/* Lista de navegación */
+#navBar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Ocupa todo el espacio horizontal */
+}
+
+#navBar ul li:first-child {
+    margin-right: auto; /* Empuja el nombre hacia la izquierda */
+}
+
+#navBar ul li a {
+    color: #E4E4F9;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+#navBar ul li a:hover {
+    color: #B8A4FF; /* Cambia de color en hover */
+}
+
+#navBar ul li:not(:first-child) {
+    margin-left: 30px; /* Espacio entre los enlaces a la derecha */
+}
