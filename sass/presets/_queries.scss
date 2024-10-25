@@ -1,5 +1,15 @@
 /* Media Query para servicios en columnas en pantallas pequeñas */
 
+@media (max-width: 600px) {
+    .mondrian-grid {
+        display: block; /* Cambia a diseño de bloque */
+    }
+
+    .mondrian-item {
+        margin-bottom: 15px; /* Espaciado entre elementos */
+    }
+}
+
 @media (max-width: 992px) {
     .services-section {
         flex-direction: column;
