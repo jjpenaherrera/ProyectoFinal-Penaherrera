@@ -10,6 +10,23 @@
     }
 }
 
+@media (max-width: 700px) {
+    .contact-section {
+        display: flex;
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        text-align: center;
+        margin: 0px;
+    }
+
+    .text-section, .form-section {
+        width: 100%; /* Asegura que ambas secciones ocupen todo el ancho */
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+
 @media (max-width: 992px) {
     .services-section {
         flex-direction: column;

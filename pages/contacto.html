@@ -43,48 +43,76 @@
     </header>   
 
     <!--CONTENIDO PRINCIPAL-->
-    <main class="contact-section">
-        <!-- Lado izquierdo con el texto lorem -->
-        <div class="text-section">
-            <h2>CONTACTO</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus placerat purus at odio feugiat
-                ultricies. Sed aliquam tellus vel ligula convallis fermentum. Mauris eget quam sit amet justo 
-                consectetur rutrum. Pellentesque vehicula dolor libero, a tincidunt mauris dapibus in. Cras quis 
-                vestibulum sapien. Donec blandit pretium dui a facilisis.
-            </p>
+<!-- CONTENIDO PRINCIPAL -->
+<main class="contact-section">
+    <!-- Lado izquierdo con el texto de introducción -->
+    <section class="text-section" style="color: #9c87ff;">
+        <h2>Contacto</h2>
+        <p>
+        Estoy aquí para ayudarte a llevar tus ideas al siguiente nivel. Si tienes alguna consulta, deseas trabajar en un proyecto conmigo o simplemente quieres saber más sobre mi trabajo, no dudes en escribirme. Me encantaría escuchar tus ideas y encontrar la mejor manera de hacerlas realidad. Completa el formulario y me pondré en contacto contigo a la brevedad.
+        </p>
+    </section>
+
+    <!-- Lado derecho con el formulario de contacto -->
+    <section class="form-section">
+        <form action="/submit_form" method="POST">
+            <!-- Campo de nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+            </div>
+
+            <!-- Campo de apellido -->
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido">
+            </div>
+
+            <!-- Campo de correo -->
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo">
+            </div>
+
+            <!-- Campo de asunto -->
+            <div class="form-group">
+                <label for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" placeholder="Ingresa el asunto">
+            </div>
+
+            <!-- Campo de descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Ingresa la descripción"></textarea>
+            </div>
+
+            <!-- Botón para abrir el modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Enviar formulario
+            </button>
+        </form>
+    </section>
+
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"  style="color:#0B0A1F;" id="exampleModalLabel">Confirmación de Envío</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"  style="color:#0B0A1F;">
+                    Tu formulario ha sido enviado exitosamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
-    
-        <!-- Lado derecho con el formulario -->
-        <div class="form-section">
-            <form action="/submit_form" method="POST">
-                <!-- NOMBRE -->
-                <label for="nombre">NOMBRE</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Give me some text">
-    
-                <!-- APELLIDO -->
-                <label for="apellido">APELLIDO</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Give me some text">
-    
-                <!-- CORREO -->
-                <label for="correo">CORREO</label>
-                <input type="email" id="correo" name="correo" placeholder="Give me some text">
-    
-                <!-- ASUNTO -->
-                <label for="asunto">ASUNTO</label>
-                <input type="text" id="asunto" name="asunto" placeholder="Give me some text">
-    
-                <!-- DESCRIPCION -->
-                <label for="descripcion">DESCRIPCION</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Give me some text"></textarea>
-    
-                <!-- SUBMIT -->
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </main>
-    
-    
+    </div>
+</main>
 
     <!--FOOTER-->
     <footer id="footer">
