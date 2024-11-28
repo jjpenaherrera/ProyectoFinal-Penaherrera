@@ -1,5 +1,3 @@
-// Bienvenida
-alert("Bienvenido al simulador de cotizaciones de dispositivos inteligentes");
 
 // Variables para los precios de los dispositivos
 const precios = {
@@ -7,6 +5,9 @@ const precios = {
     termostato: 100,
     sensorMovimiento: 75
 };
+
+// Bienvenida
+alert("Bienvenido al simulador de cotizaciones de dispositivos inteligentes");
 
 // Mostrar opciones de dispositivos
 const opciones = "Seleccione el numero del dispositivo para cotizar: " +
