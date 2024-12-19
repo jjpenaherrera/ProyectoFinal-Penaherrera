@@ -1,53 +1,69 @@
+// Variables y Objetos
+const dispositivos = [
+    { id: 1, nombre: "Alexa", precio: 50 },
+    { id: 2, nombre: "Termostato", precio: 100 },
+    { id: 3, nombre: "Sensor de Movimiento", precio: 75 }
+];
 
-// Variables para los precios de los dispositivos
-const precios = {
-    alexa: 50,
-    termostato: 100,
-    sensorMovimiento: 75
-};
+// Función para multiplicar (calcular costo total)
+function multiplicar(a, b) {
+    return a * b;
+}
+
+// Función para buscar un dispositivo por ID
+function buscarDispositivo(id) {
+    return dispositivos.find(dispositivo => dispositivo.id === id);
+}
+
+// Función para validar cantidad
+function validarCantidad() {
+    let cantidad;
+    do {
+        cantidad = Number(prompt("¿Cuántas unidades desea comprar?"));
+        if (cantidad <= 0 || isNaN(cantidad)) {
+            alert("Cantidad inválida. Por favor, ingrese un número mayor a 0.");
+        }
+    } while (cantidad <= 0 || isNaN(cantidad));
+    return cantidad;
+}
+
+// Función para validar la selección de ID
+function validarSeleccion() {
+    let seleccion;
+    do {
+        let mensajeOpciones = "Seleccione el número del dispositivo para cotizar:\n";
+        dispositivos.forEach(item => {
+            mensajeOpciones += `${item.id}. ${item.nombre} - $${item.precio}\n`;
+        });
+
+        seleccion = Number(prompt(mensajeOpciones));
+        if (seleccion !== 1 && seleccion !== 2 && seleccion !== 3) {
+            alert("Selección inválida. Por favor, ingrese 1, 2 o 3.");
+        }
+    } while (seleccion !== 1 && seleccion !== 2 && seleccion !== 3);
+    return seleccion;
+}
 
 // Bienvenida
 alert("Bienvenido al simulador de cotizaciones de dispositivos inteligentes");
 
-// Mostrar opciones de dispositivos
-const opciones = "Seleccione el numero del dispositivo para cotizar: " +
-    "1. Alexa - $" + precios.alexa + ", " +
-    "2. Termostato - $" + precios.termostato + ", " +
-    "3. Sensor de Movimiento - $" + precios.sensorMovimiento;
-
-// Solicitar al usuario su selección
-let dispositivo = Number(prompt(opciones));
-
 // Validar selección del usuario
-if (dispositivo === 1 || dispositivo === 2 || dispositivo === 3) {
-    let cantidad = Number(prompt("¿Cuántas unidades de dispositivos desea comprar?"));
-    if (cantidad <= 0) {
-        alert("Cantidad inválida. Por favor, ingrese un número válido.");
-    } else {
-        // Determinar el precio según la selección
-        let precioSeleccionado = 0;
-        let nombreDispositivo = "";
+const seleccion = validarSeleccion();
+const dispositivoSeleccionado = buscarDispositivo(seleccion);
 
-        if (dispositivo === 1) {
-            precioSeleccionado = precios.alexa;
-            nombreDispositivo = "Alexa";
-        } else if (dispositivo === 2) {
-            precioSeleccionado = precios.termostato;
-            nombreDispositivo = "Termostato";
-        } else if (dispositivo === 3) {
-            precioSeleccionado = precios.sensorMovimiento;
-            nombreDispositivo = "Sensor de Movimiento";
-        }
+// Validar cantidad ingresada
+const cantidad = validarCantidad();
 
-        // Calcular el total
-        const total = precioSeleccionado * cantidad;
+// Calcular costo total
+const costoTotal = multiplicar(dispositivoSeleccionado.precio, cantidad);
 
-        // Mostrar el resultado
-        alert("El costo total de su cotización es: $" + total);
-        console.log("Dispositivo seleccionado: " + nombreDispositivo);
-        console.log("Cantidad: " + cantidad);
-        console.log("Costo total: $" + total);
-    }
-} else {
-    alert("Selección inválida. Por favor, recargue la página para intentar nuevamente.");
-}
+// Salida de resultados
+alert(`El costo total de su cotización es: $${costoTotal}`);
+console.log(`Dispositivo seleccionado: ${dispositivoSeleccionado.nombre}`);
+console.log(`Cantidad: ${cantidad}`);
+console.log(`Costo total: $${costoTotal}`);
+
+// Extra: Filtrar dispositivos con precios menores a $100
+const dispositivosEconomicos = dispositivos.filter(d => d.precio < 100);
+console.log("Dispositivos con precios menores a $100:");
+console.log(dispositivosEconomicos);
