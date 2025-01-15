@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
     !important = Aplica a las propiedades y pisa todo orden jerárquico
     ID = Único e irrepetible / DNI / IMEI / PATENTE DE UN AUTO
@@ -18,33 +19,31 @@
 /* HEADER */
 #header {
   width: 100%;
-  min-height: 80px; /* Altura del header */
+  min-height: 80px;
   background-color: #2D4B5A;
-  padding: 0px;
+  padding: 0;
   border-radius: 15px;
-  margin-top: 10px;
-  margin-bottom: 0px;
-  align-content: center;
+  margin: 10px 0 0;
+  display: flex;
+  align-items: center;
 }
 
 #navBar {
   width: 100%;
   padding: 0 20px;
   display: flex;
-  justify-content: space-between; /* Deja el primer elemento a la izquierda y el resto a la derecha */
+  justify-content: space-between;
 }
 
-/* Lista de navegación */
 #navBar ul {
   display: flex;
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
-  width: 100%; /* Ocupa todo el espacio horizontal */
 }
 
 #navBar ul li:first-child {
-  margin-right: auto; /* Empuja el nombre hacia la izquierda */
+  margin-right: auto;
 }
 
 #navBar ul li a {
@@ -57,27 +56,91 @@
 }
 
 #navBar ul li a:hover {
-  color: #B8A4FF; /* Cambia de color en hover */
+  color: #B8A4FF;
 }
 
 #navBar ul li:not(:first-child) {
-  margin-left: 30px; /* Espacio entre los enlaces a la derecha */
+  margin-left: 30px;
 }
 
 /* MAIN */
 #main {
-text-align: center;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Estilos para el botón hamburguesa de Bootstrap */
-.navbar-toggler {
-  border: none;
-  background-color: transparent;
+#main h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #B8A4FF;
 }
 
-.navbar-toggler-icon {
-  background-image: url('data:image/svg+xml; charset=utf8, %3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%28244, 244, 244, 0.7%29" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"%3E%3C/path%3E%3C/svg%3E');
+/* Contenedor de los botones */
+#main .botones {
+  display: flex;
+  flex-direction: column;
+  /* Coloca los botones uno debajo del otro */
+  align-items: center;
+  gap: 10px;
+  /* Espacio entre botones */
+  margin-top: 20px;
 }
+
+#main button {
+  width: 200px;
+  /* Botones con ancho uniforme */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #2D4B5A;
+  color: #E4E4F9;
+  border: 2px solid #B8A4FF;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#main button:hover {
+  background-color: #B8A4FF;
+  transform: scale(1.05);
+}
+
+/* Tarjeta de resultados */
+#resultado {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1A1B33;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  text-align: left;
+}
+
+#resultado h3 {
+  margin-bottom: 10px;
+  color: #E4E4F9;
+}
+
+#resultado ul {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+#resultado ul li {
+  margin-bottom: 5px;
+  color: #FFFFFF;
+  /* Texto más claro para mejor contraste */
+}
+
+#resultado p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  /* Mejor contraste para el texto */
+}
+
+
 
 /* FOOTER */
 #footer {
@@ -86,21 +149,18 @@ text-align: center;
   background-color: #2D4B5A;
   text-align: center;
   border-radius: 15px;
-  margin-bottom: 5px;
-  margin-top: 15px;
+  margin: 15px 0 5px;
 }
 
 .footer-links ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  margin: 0;
   flex-wrap: wrap;
 }
 
 .footer-links ul li {
-  margin: 0 15px; /* Espacio entre los iconos de redes sociales */
+  margin: 0 15px;
 }
 
 .footer-links ul li a img {
@@ -114,19 +174,19 @@ text-align: center;
 }
 
 .footer-copyright p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 /* Estilos globales */
 body {
   max-width: 1400px;
   min-height: 100vh;
-  margin: auto; /* Centra el contenido en pantallas más grandes */
-  background-color: #0B0A1F; /* Color de fondo global */
+  margin: auto;
+  background-color: #0B0A1F;
   font-size: large;
   display: flex;
-  flex-direction: column; /* Distribuye elementos verticalmente */
-  justify-content: space-between; /* Empuja el footer al final */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=style.css.map */

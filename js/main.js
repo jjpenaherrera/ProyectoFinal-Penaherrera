@@ -1,69 +1,110 @@
-// Variables y Objetos
+// Lista de dispositivos
 const dispositivos = [
     { id: 1, nombre: "Alexa", precio: 50 },
     { id: 2, nombre: "Termostato", precio: 100 },
-    { id: 3, nombre: "Sensor de Movimiento", precio: 75 }
+    { id: 3, nombre: "Sensor de Movimiento", precio: 75 },
+    { id: 4, nombre: "Cámara de Seguridad", precio: 150 },
+    { id: 5, nombre: "Aspiradora Robot", precio: 300 },
+    { id: 6, nombre: "Interruptor Inteligente", precio: 25 },
 ];
 
-// Función para multiplicar (calcular costo total)
-function multiplicar(a, b) {
-    return a * b;
-}
+// Obtener elementos del DOM
+const cotizadorForm = document.getElementById("cotizadorForm");
+const dispositivosContainer = document.getElementById("dispositivos-container");
+const addDispositivoButton = document.getElementById("addDispositivo");
+const resultadoDiv = document.getElementById("resultado");
 
-// Función para buscar un dispositivo por ID
-function buscarDispositivo(id) {
-    return dispositivos.find(dispositivo => dispositivo.id === id);
-}
+// Función para agregar un nuevo grupo de dispositivo
+addDispositivoButton.addEventListener("click", () => {
+    const nuevoDispositivo = document.createElement("div");
+    nuevoDispositivo.classList.add("dispositivo-group", "mb-3");
+    nuevoDispositivo.innerHTML = `
+        <label for="dispositivo" class="form-label">Seleccione un dispositivo:</label>
+        <select class="form-select dispositivo" name="dispositivo">
+            <option value="50">Alexa - $50</option>
+            <option value="100">Termostato - $100</option>
+            <option value="75">Sensor de Movimiento - $75</option>
+            <option value="150">Cámara de Seguridad - $150</option>
+            <option value="300">Aspiradora Robot - $300</option>
+            <option value="25">Interruptor Inteligente - $25</option>
+        </select>
+        <label for="cantidad" class="form-label mt-2">Ingrese la cantidad:</label>
+        <input type="number" class="form-control cantidad" min="1" placeholder="Ejemplo: 2">
+    `;
+    dispositivosContainer.appendChild(nuevoDispositivo);
+});
 
-// Función para validar cantidad
-function validarCantidad() {
-    let cantidad;
-    do {
-        cantidad = Number(prompt("¿Cuántas unidades desea comprar?"));
-        if (cantidad <= 0 || isNaN(cantidad)) {
-            alert("Cantidad inválida. Por favor, ingrese un número mayor a 0.");
+// Función para calcular la cotización
+cotizadorForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Evita el envío del formulario
+    let total = 0;
+
+    // Recorrer los grupos de dispositivos y calcular el total
+    const dispositivos = dispositivosContainer.querySelectorAll(".dispositivo-group");
+    const detalles = [];
+    dispositivos.forEach((grupo, index) => {
+        const dispositivo = grupo.querySelector(".dispositivo").value;
+        const cantidad = parseInt(grupo.querySelector(".cantidad").value) || 0;
+        const subtotal = dispositivo * cantidad;
+
+        if (cantidad > 0) {
+            detalles.push(`Dispositivo ${index + 1}: Cantidad ${cantidad} - Subtotal $${subtotal}`);
+            total += subtotal;
         }
-    } while (cantidad <= 0 || isNaN(cantidad));
-    return cantidad;
+    });
+
+    // Mostrar el resultado
+    resultadoDiv.innerHTML = `
+        <h3>Detalle de la cotización:</h3>
+        <ul>
+            ${detalles.map((detalle) => `<li>${detalle}</li>`).join("")}
+        </ul>
+        <p>Total General: $${total}</p>
+    `;
+});
+
+
+// Función para guardar en localStorage
+function guardarCotizacion(session) {
+    let cotizaciones = JSON.parse(localStorage.getItem("cotizaciones")) || [];
+    cotizaciones.push(session);
+    localStorage.setItem("cotizaciones", JSON.stringify(cotizaciones));
 }
 
-// Función para validar la selección de ID
-function validarSeleccion() {
-    let seleccion;
-    do {
-        let mensajeOpciones = "Seleccione el número del dispositivo para cotizar:\n";
-        dispositivos.forEach(item => {
-            mensajeOpciones += `${item.id}. ${item.nombre} - $${item.precio}\n`;
-        });
+// Manejo del evento de agregar dispositivos
+addDispositivoButton.addEventListener("click", agregarDispositivo);
 
-        seleccion = Number(prompt(mensajeOpciones));
-        if (seleccion !== 1 && seleccion !== 2 && seleccion !== 3) {
-            alert("Selección inválida. Por favor, ingrese 1, 2 o 3.");
+// Manejo del evento submit
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const dispositivosSeleccionados = document.querySelectorAll(".dispositivo");
+    const cantidades = document.querySelectorAll(".cantidad");
+
+    const session = [];
+
+    dispositivosSeleccionados.forEach((select, index) => {
+        const dispositivoId = Number(select.value);
+        const cantidad = Number(cantidades[index].value);
+
+        if (isNaN(cantidad) || cantidad <= 0) {
+            mostrarResultado([{ dispositivo: "Error", cantidad: 0, costoTotal: 0 }]);
+            return;
         }
-    } while (seleccion !== 1 && seleccion !== 2 && seleccion !== 3);
-    return seleccion;
-}
 
-// Bienvenida
-alert("Bienvenido al simulador de cotizaciones de dispositivos inteligentes");
+        const dispositivo = dispositivos.find(d => d.id === dispositivoId);
+        const costoTotal = dispositivo.precio * cantidad;
 
-// Validar selección del usuario
-const seleccion = validarSeleccion();
-const dispositivoSeleccionado = buscarDispositivo(seleccion);
+        session.push({ dispositivo: dispositivo.nombre, cantidad, costoTotal });
+    });
 
-// Validar cantidad ingresada
-const cantidad = validarCantidad();
+    guardarCotizacion(session);
+    mostrarResultado(session);
 
-// Calcular costo total
-const costoTotal = multiplicar(dispositivoSeleccionado.precio, cantidad);
+    form.reset();
+    dispositivosContainer.innerHTML = ""; // Resetear campos dinámicos
+    agregarDispositivo(); // Agregar un grupo por defecto
+});
 
-// Salida de resultados
-alert(`El costo total de su cotización es: $${costoTotal}`);
-console.log(`Dispositivo seleccionado: ${dispositivoSeleccionado.nombre}`);
-console.log(`Cantidad: ${cantidad}`);
-console.log(`Costo total: $${costoTotal}`);
-
-// Extra: Filtrar dispositivos con precios menores a $100
-const dispositivosEconomicos = dispositivos.filter(d => d.precio < 100);
-console.log("Dispositivos con precios menores a $100:");
-console.log(dispositivosEconomicos);
+// Inicialización
+agregarDispositivo();

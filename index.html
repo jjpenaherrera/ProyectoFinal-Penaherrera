@@ -32,23 +32,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: #E4E4F9" href="#">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: #E4E4F9" href="#">SOBRE MI</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: #E4E4F9" href="#">SERVICIOS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: #E4E4F9" href="#">NOTICIAS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: #E4E4F9" href="#">CONTACTO</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -56,10 +39,35 @@
 
     <!--ESTRUCTURA N2= MAIN-->
     <main id="main">
-        <section>
-            <h1>SIMULADOR DE COTIZACION DE DISPOSITIVOS INTELIGENTES</h1>
+        <section class="container my-5">
+            <h1>SIMULADOR DE COTIZACIÓN DE DISPOSITIVOS INTELIGENTES</h1>
+            <form id="cotizadorForm" class="mt-4">
+                <div id="dispositivos-container">
+                    <div class="dispositivo-group mb-3">
+                        <label for="dispositivo" class="form-label">Seleccione un dispositivo:</label>
+                        <select class="form-select dispositivo" name="dispositivo">
+                            <option value="50">Alexa - $50</option>
+                            <option value="100">Termostato - $100</option>
+                            <option value="75">Sensor de Movimiento - $75</option>
+                            <option value="150">Cámara de Seguridad - $150</option>
+                            <option value="300">Aspiradora Robot - $300</option>
+                            <option value="25">Interruptor Inteligente - $25</option>
+                        </select>
+                        <label for="cantidad" class="form-label mt-2">Ingrese la cantidad:</label>
+                        <input type="number" class="form-control cantidad" min="1" placeholder="Ejemplo: 2">
+                    </div>
+                </div>
+                <div class="botones">
+                    <button type="button" id="addDispositivo" class="btn btn-secondary">Agregar otro
+                        dispositivo</button>
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                </div>
+            </form>
+            <div id="resultado" class="mt-4"></div>
         </section>
     </main>
+
+
 
     <!-- Footer con iconos de redes sociales -->
     <footer id="footer">
@@ -89,7 +97,7 @@
         </section>
 
         <section class="footer-copyright">
-            <p>&copy; 2024 Juan José Peñaherrera - Todos los derechos reservados</p>
+            <p>&copy; 2025 Juan José Peñaherrera - Todos los derechos reservados</p>
         </section>
     </footer>
 
